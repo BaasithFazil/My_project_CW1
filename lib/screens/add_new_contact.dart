@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:content_buddy/constants/constants.dart';
 import 'package:content_buddy/model/model_class.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,8 +28,8 @@ class _AddNewState extends State<AddNew> {
   File? image;
 
   TextStyle mystyle = const TextStyle(
-    fontSize: 20,
-    color: Colors.white,
+    fontSize: 20, 
+    color: Colors.black,
     fontWeight: FontWeight.w500,
   );
 
@@ -37,8 +38,8 @@ class _AddNewState extends State<AddNew> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Add Contact Details", style: TextStyle(color: Colors.black,),),
-        backgroundColor: Colors.white,
+        title: const Text("Add Contact Details", style: TextStyle(color: MyColors.primaryblack),),
+        backgroundColor: MyColors.primarywhite,
         elevation: 0.0,
       ),
       body: Center(
@@ -51,21 +52,21 @@ class _AddNewState extends State<AddNew> {
                 children: [
                   CircleAvatar(
                     backgroundImage: (image != null) ? FileImage(image!) : null,
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: MyColors.primarydeeppurple,
                     radius: 50,
                     child: Text(
                       (image != null) ? "" : "ADD",
                     ),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.purpleAccent,
+                    backgroundColor: MyColors.primarypurpleaccent,
                     onPressed: () async {
                       await showDialog(
                         context: context,
                         builder: (context) {
                           return AlertDialog(
                             title: const Text(
-                                'What do you want to take photos from?'),
+                                'Where do you want to take photos from?'),
                             actions: [
                               ElevatedButton(
                                 onPressed: () async {
@@ -76,6 +77,9 @@ class _AddNewState extends State<AddNew> {
                                   });
                                   Navigator.of(context).pop();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: MyColors.primarydeeppurple,
+                                ),
                                 child: const Text("ALBUMS"),
                               ),
                               ElevatedButton(
@@ -87,6 +91,9 @@ class _AddNewState extends State<AddNew> {
                                   });
                                   Navigator.of(context).pop();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: MyColors.primarydeeppurple
+                                ),
                                 child: const Text("CAMERA"),
                               ),
                             ],
@@ -95,7 +102,7 @@ class _AddNewState extends State<AddNew> {
                       );
                     },
                     mini: true,
-                    child: const Icon(Icons.add),
+                    child: MyStyle.addIcon,
                   ),
                 ],
               ),
@@ -105,17 +112,13 @@ class _AddNewState extends State<AddNew> {
               child: Form(
                 key: contactkey,
                 child: Container(
-                  padding: const EdgeInsets.all(20),
+                  padding: MyPadding.paddingsecond,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(
                           height: 20,
-                        ),
-                        Text(
-                          "First Name",
-                          style: mystyle,
                         ),
                         const SizedBox(
                           height: 5,
@@ -145,10 +148,6 @@ class _AddNewState extends State<AddNew> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          "Last Name",
-                          style: mystyle,
-                        ),
                         const SizedBox(
                           height: 5,
                         ),
@@ -177,10 +176,6 @@ class _AddNewState extends State<AddNew> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          "Phone Number",
-                          style: mystyle,
-                        ),
                         const SizedBox(
                           height: 5,
                         ),
@@ -202,17 +197,13 @@ class _AddNewState extends State<AddNew> {
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.black,
+                                  color: MyColors.primaryblack
                                 ),
                               ),
-                              hintText: "+91 0000000000"),
+                              hintText: "+94 0000000000"),
                         ),
                         const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "Email",
-                          style: mystyle,
+                          height: 15,
                         ),
                         const SizedBox(
                           height: 5,
@@ -235,7 +226,7 @@ class _AddNewState extends State<AddNew> {
                             border: UnderlineInputBorder(),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.black,
+                                color: MyColors.primaryblack
                               ),
                             ),
                             hintText: "Email",
@@ -268,9 +259,9 @@ class _AddNewState extends State<AddNew> {
                 }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.purple,
+                              backgroundColor: MyColors.primarypurple,
                             ), 
-                            child: const Text("Add Contacts", style: TextStyle(fontSize: 20, ),),
+                            child: const Text("Add Contacts", style: TextStyle(fontSize: 18, ),),
                             ),
                     const SizedBox(
                       width: 15,
@@ -279,8 +270,8 @@ class _AddNewState extends State<AddNew> {
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple
-                    ), child: const Text("Go Back", style: TextStyle(fontSize: 20),
+                      backgroundColor: MyColors.primarydeeppurple,
+                    ), child: const Text("Go Back", style: TextStyle(fontSize: 18),
                     ),
                     ),
                     ],

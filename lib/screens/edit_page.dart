@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:content_buddy/constants/constants.dart';
 import 'package:flutter/material.dart';
 import '../model/model_class.dart';
+// ignore: depend_on_referenced_packages
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 
 class EditPage extends StatefulWidget {
@@ -25,10 +27,7 @@ class _EditPageState extends State<EditPage> {
   String? _email;
   File? _image;
 
-  TextStyle mystyle = const TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
-  );
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +45,11 @@ class _EditPageState extends State<EditPage> {
         title: const Text(
           "Edit Details",
           style:
-              TextStyle(color: Colors.black),
+              TextStyle(color: MyColors.primaryblack),
         ),
       ),
       body: ColorfulSafeArea(
-        color: Colors.white,
+        color: MyColors.primarywhite,
         child: Form(
           key: _editcontactkey,
           child: Container(
@@ -59,16 +58,12 @@ class _EditPageState extends State<EditPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
+                  MyStyle.sizedbox4,
+                  const Text(
                     "First Name",
-                    style: mystyle,
+                    style: MyStyle.formStyle,
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  MyStyle.sizedbox6,
                   TextFormField(
                     controller: _firstnamecontroller,
                     validator: (val) {
@@ -86,21 +81,17 @@ class _EditPageState extends State<EditPage> {
                         border: UnderlineInputBorder(),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: MyColors.primarygrey,
                           ),
                         ),
                         hintText: "First Name"),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
+                  MyStyle.sizedbox4,
+                  const Text(
                     "Last Name",
-                    style: mystyle,
+                    style: MyStyle.formStyle,
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  MyStyle.sizedbox6,
                   TextFormField(
                     controller: _lastnamecontroller,
                     validator: (val) {
@@ -118,21 +109,17 @@ class _EditPageState extends State<EditPage> {
                         border: UnderlineInputBorder(),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: MyColors.primarygrey,
                           ),
                         ),
                         hintText: "Last Name"),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
+                  MyStyle.sizedbox4,
+                  const Text(
                     "Phone Number",
-                    style: mystyle,
+                    style: MyStyle.formStyle,
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  MyStyle.sizedbox6,
                   TextFormField(
                     controller: _phonenumbercontroller,
                     keyboardType: TextInputType.phone,
@@ -151,21 +138,17 @@ class _EditPageState extends State<EditPage> {
                         border: UnderlineInputBorder(),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: MyColors.primarygrey,
                           ),
                         ),
-                        hintText: "+91 0000000000"),
+                        hintText: "+94 0000000000"),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
+                  MyStyle.sizedbox4,
+                  const Text(
                     "Email",
-                    style: mystyle,
+                    style: MyStyle.formStyle,
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  MyStyle.sizedbox6,
                   TextFormField(
                     controller: _emailcontroller,
                     keyboardType: TextInputType.emailAddress,
@@ -184,12 +167,13 @@ class _EditPageState extends State<EditPage> {
                         border: UnderlineInputBorder(),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: MyColors.primarygrey,
                           ),
                         ),
                         hintText: "Email"),
                   ),
 
+                  MyStyle.sizedbox1,
                   Row(
                     children: [
                       ElevatedButton.icon(onPressed: (){
@@ -204,11 +188,9 @@ class _EditPageState extends State<EditPage> {
                             _phonenumber = "";
                             _email = "";
                           });
-                      }, icon: const Icon(Icons.arrow_back), label: const Text("Go Back")),
+                      }, icon: MyStyle.arrowBackIcon, label: const Text("Go Back"), style: ElevatedButton.styleFrom(backgroundColor: MyColors.primarydeeppurple),),
 
-                  const SizedBox(
-                    width: 15.0,
-                  ),
+                 MyStyle.sizedbox3,
 
                   ElevatedButton.icon(onPressed: (){
                     if (_editcontactkey.currentState!.validate()) {
@@ -229,7 +211,9 @@ class _EditPageState extends State<EditPage> {
                   Navigator.of(context)
                       .pushNamedAndRemoveUntil('homepage', (route) => false);
                 }
-                  }, icon: const Icon(Icons.update), label: const Text("Update Details")),
+                  }, icon: const Icon(Icons.update), label: const Text("Update Details"), style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColors.primarydeeppurple,
+                  ),),
         
         
                     ],

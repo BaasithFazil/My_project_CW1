@@ -1,4 +1,5 @@
 
+import 'package:content_buddy/constants/constants.dart';
 import 'package:content_buddy/model/model_class.dart';
 import 'package:flutter/material.dart';
 
@@ -16,28 +17,24 @@ class _DetailPageState extends State<DetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: MyColors.primarywhite,
         elevation: 0.0,
         centerTitle: true,
         title: const Text(
           "Contacts Details",
           style:
-              TextStyle(color: Colors.black),
+              TextStyle(color: MyColors.primaryblack),
         ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 10.0,
-          ),
+          MyStyle.sizedbox1,
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Spacer(
-                flex: 2,
-              ),
+              MyStyle.spacer1,
               CircleAvatar(
                 backgroundImage:
                     (res.image != null) ? FileImage(res.image!) : null,
@@ -45,10 +42,7 @@ class _DetailPageState extends State<DetailPage> {
                 radius: 55,
                 child: Text(
                   (res.image != null) ? "" : "ADD",
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: MyStyle.avatarStyle,
                 ),
               ),
               const Spacer(
@@ -56,30 +50,21 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          MyStyle.sizedbox5,
 
             Text(
               "Name: ${res.firstname} ${res.lastname}",
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: MyStyle.firstName,
             ),
 
-          const SizedBox(
-            height: 30,
-          ),
+          MyStyle.sizedbox5,
             Text(
-              "Number: +91 ${res.phonenumber} ",
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              "Number: +94 ${res.phonenumber} ",
+              style: MyStyle.phoneNumber,
             ),
-          const SizedBox(
-            height: 15,
-          ),
-
-          Text("Email Address: ${res.email}",style: const TextStyle(fontSize: 16),),
-          const SizedBox(
-            height: 15,
-          ),
+          MyStyle.sizedbox2,
+          Text("Email Address: ${res.email}",style: MyStyle.emailAddress),
+          MyStyle.sizedbox4,
 
 
           Row(
@@ -87,7 +72,9 @@ class _DetailPageState extends State<DetailPage> {
             children: [
               ElevatedButton.icon(onPressed: (){
                 Navigator.of(context).pushNamed('editpage', arguments: res);
-              }, icon: const Icon(Icons.edit), label: const Text("Edit")),
+              }, icon: const Icon(Icons.edit), label: const Text("Edit"), style: ElevatedButton.styleFrom(
+                backgroundColor: MyColors.primarydeeppurple,
+              ),),
               const SizedBox(
                 width: 15.0,
               ),
@@ -99,23 +86,23 @@ class _DetailPageState extends State<DetailPage> {
                       actions: [ 
                         TextButton(onPressed: (){
                           Navigator.of(dialogContext).pop();
-                        }, child: const Text("No")),
+                        }, child: const Text("No", style: TextStyle(color: MyColors.primarydeeppurple),)),
                         TextButton(onPressed: (){
                           Global.allcontacts.remove(res);
 
                           Navigator.of(context).pushNamedAndRemoveUntil('homepage', (route) => false);
-                        }, child: const Text("Yes"))
+                        }, child: const Text("Yes", style: TextStyle(color: MyColors.primarydeeppurple),))
                       ],
                     );
                  },
                  );
               }, 
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purpleAccent,
+                backgroundColor: MyColors.primarypurple,
               ),
-              icon: const Icon(Icons.delete, color: Colors.red,), label: const Text("Delete")),
+              icon: MyStyle.deleteIcon, label: const Text("Delete")),
 
-                const SizedBox(),
+                MyStyle.sizedbox3,
 
             ],
           ),
@@ -123,7 +110,7 @@ class _DetailPageState extends State<DetailPage> {
             Navigator.of(context).pop();
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.purple,
+            backgroundColor: MyColors.primarypurple,
           ), child: const Text("Go Back"),
           
           ),

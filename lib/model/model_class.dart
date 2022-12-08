@@ -19,3 +19,4 @@ class Contact {
 class Global {
   static List<Contact> allcontacts = [];
 }
+
